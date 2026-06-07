@@ -1,26 +1,227 @@
-@import "tailwindcss";
+@import "@heroui/react/styles";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* Geist fonts from next/font */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ------------------------------------------------------------------ */
+/* Theme tokens — accent + immersive aurora / glass layers            */
+/* ------------------------------------------------------------------ */
+
+/* Light: #2563EB accent, soft cool aurora over a near-white base */
+:root,
+.light,
+[data-theme="light"] {
+  --accent: oklch(0.447 0.231 264);
+  --accent-foreground: oklch(0.98 0 0);
+
+  /* Aurora mesh — blue brand + analogous indigo / cyan */
+  --aurora-1: oklch(0.72 0.16 262); /* blue   */
+  --aurora-2: oklch(0.70 0.16 290); /* indigo */
+  --aurora-3: oklch(0.82 0.11 220); /* cyan   */
+  --aurora-opacity: 0.35;
+
+  /* Glassmorphism surfaces */
+  --glass-bg: color-mix(in oklab, var(--surface) 70%, transparent);
+  --glass-border: color-mix(in oklab, var(--foreground) 10%, transparent);
+  --glass-shadow: inset 0 1px 0 0 color-mix(in oklab, white 60%, transparent),
+    0 10px 30px -12px rgba(15, 23, 42, 0.25);
+  --glass-shadow-hover: inset 0 1px 0 0 color-mix(in oklab, white 70%, transparent),
+    0 0 0 1px color-mix(in oklab, var(--accent) 35%, transparent),
+    0 24px 55px -18px color-mix(in oklab, var(--accent) 45%, transparent);
+}
+
+/* Dark: brighter accent, vivid aurora over a deep base */
+.dark,
+[data-theme="dark"] {
+  --accent: oklch(0.597 0.205 262);
+  --accent-foreground: oklch(0.98 0 0);
+
+  --aurora-1: oklch(0.60 0.22 262); /* blue   */
+  --aurora-2: oklch(0.55 0.24 287); /* indigo */
+  --aurora-3: oklch(0.68 0.16 220); /* cyan   */
+  --aurora-opacity: 0.55;
+
+  --glass-bg: color-mix(in oklab, var(--surface) 55%, transparent);
+  --glass-border: color-mix(in oklab, white 12%, transparent);
+  --glass-shadow: inset 0 1px 0 0 color-mix(in oklab, white 10%, transparent),
+    0 12px 34px -14px rgba(0, 0, 0, 0.7);
+  --glass-shadow-hover: inset 0 1px 0 0 color-mix(in oklab, white 16%, transparent),
+    0 0 0 1px color-mix(in oklab, var(--accent) 40%, transparent),
+    0 26px 60px -18px color-mix(in oklab, var(--accent) 50%, transparent);
+}
+
+/* ------------------------------------------------------------------ */
+/* Base                                                                */
+/* ------------------------------------------------------------------ */
+
+html {
+  scroll-behavior: smooth;
+  /* Base color lives on <html> so the fixed aurora layer (z-index:-1)  */
+  /* paints above it but behind the (transparent) body content.         */
+  background-color: var(--background);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans, Arial, sans-serif);
+  background-color: transparent;
+}
+
+/* ------------------------------------------------------------------ */
+/* Aurora background — animated colored blobs + grain                  */
+/* ------------------------------------------------------------------ */
+
+.aurora-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Wrapper that receives the scroll-parallax transform (keeps it off the blob
+   so the blob's own CSS float keyframes don't get overwritten). */
+.aurora-layer {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.aurora-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: var(--aurora-opacity);
+  will-change: transform;
+  /* Only transform/opacity animate — keeps the blobs on the compositor */
+}
+
+.aurora-blob--1 {
+  width: 46rem;
+  height: 46rem;
+  top: -14rem;
+  left: -10rem;
+  background: radial-gradient(circle at center, var(--aurora-1), transparent 68%);
+  animation: aurora-float-1 24s ease-in-out infinite;
+}
+
+.aurora-blob--2 {
+  width: 40rem;
+  height: 40rem;
+  top: 20%;
+  right: -12rem;
+  background: radial-gradient(circle at center, var(--aurora-2), transparent 68%);
+  animation: aurora-float-2 30s ease-in-out infinite;
+}
+
+.aurora-blob--3 {
+  width: 38rem;
+  height: 38rem;
+  bottom: -14rem;
+  left: 30%;
+  background: radial-gradient(circle at center, var(--aurora-3), transparent 70%);
+  animation: aurora-float-3 27s ease-in-out infinite;
+}
+
+/* Subtle film grain to break up the flat gradients */
+.aurora-grain {
+  position: absolute;
+  inset: -50%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+}
+
+@keyframes aurora-float-1 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(6rem, 4rem, 0) scale(1.12); }
+}
+
+@keyframes aurora-float-2 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-5rem, 6rem, 0) scale(0.9); }
+}
+
+@keyframes aurora-float-3 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(4rem, -5rem, 0) scale(1.08); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora-blob {
+    animation: none;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Utilities                                                           */
+/* ------------------------------------------------------------------ */
+
+/* Glassmorphism card — applied explicitly, never globally on .card */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: color-mix(in oklab, var(--accent) 55%, transparent);
+  box-shadow: var(--glass-shadow-hover);
+}
+
+/* Frosted pill — for eyebrow labels / badges */
+.glass-pill {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+/* Hero portrait — glass frame wrapped in a slowly rotating aurora ring */
+.portrait-ring {
+  position: absolute;
+  inset: -1.25rem;
+  border-radius: 2.5rem;
+  background: conic-gradient(
+    from 0deg,
+    var(--aurora-1),
+    var(--aurora-2),
+    var(--aurora-3),
+    var(--aurora-1)
+  );
+  filter: blur(28px);
+  opacity: 0.65;
+  will-change: transform;
+  animation: aurora-spin 22s linear infinite;
+}
+
+@keyframes aurora-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portrait-ring {
+    animation: none;
+  }
+}
+
+/* Gradient text accent */
+.text-gradient {
+  background-image: linear-gradient(
+    115deg,
+    var(--foreground) 28%,
+    var(--accent) 70%,
+    var(--aurora-2) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
