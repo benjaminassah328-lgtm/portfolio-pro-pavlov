@@ -31,7 +31,7 @@ function GithubIcon() {
 const links = [
   { label: "Email", href: `mailto:${profile.email}`, icon: <MailIcon />, value: profile.email },
   { label: "LinkedIn", href: profile.linkedin, icon: <LinkedinIcon />, value: "linkedin.com/in/benjaminassah" },
-  { label: "GitHub", href: profile.github, icon: <GithubIcon />, value: "github.com/benjaminassah" },
+  { label: "GitHub", href: profile.github, icon: <GithubIcon />, value: "benjaminassah328-lgtm" },
 ];
 
 export function Contact() {

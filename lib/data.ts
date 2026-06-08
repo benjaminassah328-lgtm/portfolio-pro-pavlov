@@ -3,8 +3,8 @@ export const profile = {
   title: "Développeur Web",
   tagline:
     "Passionné par le code, curieux par nature — fraîchement diplômé et prêt à construire.",
-  email: "benjamin.assah@email.com",
-  github: "https://github.com/benjaminassah",
+  email: "benjaminassah328@gmail.com",
+  github: "https://benjaminassah328-lgtm",
   linkedin: "https://linkedin.com/in/benjaminassah",
   cvPath: "/cv-benjamin-assah.pdf",
 };
@@ -16,9 +16,9 @@ export const about = {
 export const education = [
   {
     id: 1,
-    school: "École Supérieure d'Informatique",
-    degree: "Licence Professionnelle en Informatique",
-    year: "2022 – 2025",
+    school: "UIPA",
+    degree: "2e Année d'Informatique Developpeur d'Application",
+    year: "2024 – 2026",
     description:
       "Formation générale en développement logiciel, algorithmique, bases de données et systèmes d'information.",
   },
@@ -27,29 +27,29 @@ export const education = [
 export const projects = [
   {
     id: 1,
-    title: "Site E-commerce",
+    title: "Home Digital",
     description:
       "Application web de vente en ligne avec gestion des produits, panier d'achat et système de commandes.",
     stack: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
-    github: "https://github.com/benjaminassah/ecommerce",
-    type: "Scolaire",
+    github: "https://home-digital-eul3.vercel.app",
+    type: "Personnel",
   },
   {
     id: 2,
-    title: "Todo App",
+    title: "lagague-music",
     description:
-      "Application de gestion de tâches avec stockage local, filtres et interface responsive.",
+      "Site de Music conçu pour la promotion des jeunes talents d'afrique.",
     stack: ["React", "Tailwind CSS"],
-    github: "https://github.com/benjaminassah/todo-app",
+    github: "https://lagague-music.vercel.app",
     type: "Personnel",
   },
   {
     id: 3,
-    title: "API Bibliothèque",
+    title: "Restaurant Pavlov",
     description:
-      "API RESTful pour la gestion d'une bibliothèque numérique avec authentification JWT.",
+      "Site de restaurant pour recevoir les commandes via whatsApp",
     stack: ["Node.js", "Express", "MySQL"],
-    github: "https://github.com/benjaminassah/library-api",
+    github: "https://restaurant-pavlov-6b3fbscsk-benjaminassah328-lgtms-projects.vercel.app",
     type: "Scolaire",
   },
 ];

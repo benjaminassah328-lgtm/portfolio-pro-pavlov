@@ -5,7 +5,7 @@ import { profile } from "@/lib/data";
  * (e.g. public/benjamin.jpg) and set PHOTO_SRC below — the placeholder
  * disappears automatically.
  */
-const PHOTO_SRC = ""; // ← ex: "/benjamin.jpg"
+const PHOTO_SRC = "/pavlov.jpeg"; // ← ex: "/benjamin.jpg"
 
 function PersonIcon() {
   return (

@@ -52,7 +52,7 @@ export function Navbar() {
     >
       <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
         <span className="font-bold text-foreground text-lg tracking-tight">
-          {profile.name.split(" ").map((n) => n[0]).join("")}
+          Mr Pavlov
         </span>
 
         <nav className="hidden md:flex items-center gap-6 text-sm text-muted">
