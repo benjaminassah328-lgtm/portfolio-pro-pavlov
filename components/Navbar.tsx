@@ -95,7 +95,7 @@ export function Navbar() {
     >
       <div className="w-full max-w-5xl mx-auto px-3 sm:px-4 md:px-6 h-16 flex items-center justify-between overflow-hidden">
         <span className="font-bold text-foreground text-base sm:text-lg tracking-tight font-lora">
-  <span className="text-2xl font-orbitron">P</span>avlov.<span className="text-2xl text-blue-500 font-orbitron"><span></span><span className="font-orbitron text-2xl">D</span>ev</span>
+  <span className="text-2xl font-orbitron">A</span>.DB<span className="text-2xl text-blue-500 font-orbitron"><span></span><span className="font-orbitron text-2xl">D</span>ev</span>
 </span>
         {/* Menu Desktop */}
         <nav className="hidden lg:flex items-center gap-6 text-sm text-muted">
