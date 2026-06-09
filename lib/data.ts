@@ -30,7 +30,7 @@ export const projects = [
     title: "Home Digital",
     description:
       "Application web de vente en ligne avec gestion des produits, panier d'achat et système de commandes.",
-    stack: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
+    stack: ["React", "Tailwind CSS"],
     github: "https://home-digital-eul3.vercel.app",
     type: "Personnel",
   },
@@ -48,8 +48,8 @@ export const projects = [
     title: "Restaurant Pavlov",
     description:
       "Site de restaurant pour recevoir les commandes via whatsApp",
-    stack: ["Node.js", "Express", "MySQL"],
+    stack: ["React", "Tailwind CSS"],
     github: "https://restaurant-pavlov-6b3fbscsk-benjaminassah328-lgtms-projects.vercel.app",
-    type: "Scolaire",
+    type: "Personnel",
   },
 ];

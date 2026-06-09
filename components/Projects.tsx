@@ -4,6 +4,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, 
 import { projects } from "@/lib/data";
 import { TiltCard } from "@/components/TiltCard";
 import { revealUp, staggerContainer, viewportOnce } from "@/lib/motion";
+import { Eye } from "lucide-react";
 
 function GithubIcon() {
   return (
@@ -74,17 +75,17 @@ export function Projects() {
                 </CardContent>
 
                 <CardFooter>
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm font-medium transition-colors duration-200 hover:opacity-80"
-                    style={{ color: "var(--accent)" }}
-                  >
-                    <GithubIcon />
-                    Voir sur GitHub
-                  </a>
-                </CardFooter>
+  <a
+    href={project.github}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center gap-2 text-sm font-medium transition-colors duration-200 hover:opacity-80"
+    style={{ color: "var(--accent)" }}
+  >
+    <Eye size={16} />
+    Voir mon projet
+  </a>
+</CardFooter>
                 </Card>
               </TiltCard>
             </motion.div>

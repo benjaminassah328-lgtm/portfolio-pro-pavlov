@@ -43,19 +43,21 @@ export function Navbar() {
 
   return (
     <motion.header
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      className="fixed top-0 left-0 right-0 z-50 w-full overflow-x-hidden transition-all duration-300"
       style={{
         backdropFilter: scrolled ? "blur(12px)" : "none",
         borderBottom: scrolled ? "1px solid var(--border)" : "none",
-        backgroundColor: scrolled ? "color-mix(in srgb, var(--background) 80%, transparent)" : "transparent",
+        backgroundColor: scrolled
+          ? "color-mix(in srgb, var(--background) 80%, transparent)"
+          : "transparent",
       }}
     >
-      <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-        <span className="font-bold text-foreground text-lg tracking-tight">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between overflow-x-hidden">
+        <span className="font-bold text-foreground text-base sm:text-lg tracking-tight truncate">
           Mr Pavlov
         </span>
 
-        <nav className="hidden md:flex items-center gap-6 text-sm text-muted">
+        <nav className="hidden lg:flex items-center gap-6 text-sm text-muted">
           {navLinks.map((link) => (
             <a
               key={link.href}
