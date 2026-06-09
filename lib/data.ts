@@ -22,6 +22,14 @@ export const education = [
     description:
       "Formation générale en développement logiciel, algorithmique, bases de données et systèmes d'information.",
   },
+  {
+    id: 1,
+    school: "Lunion-Lab",
+    degree: "Developpeur Junior",
+    year: "2025",
+    description:
+      "Formation générale en développement Full-stack (React, Tailwind css)",
+  },
 ];
 
 export const projects = [
