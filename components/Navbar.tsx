@@ -96,11 +96,43 @@ export function Navbar() {
   <div className="w-full max-w-6xl mx-auto px-3 sm:px-6 md:px-8 h-16 flex items-center justify-between overflow-hidden">
     
     {/* LOGO */}
-    <span className="font-bold text-foreground text-base sm:text-lg tracking-tight font-lora truncate">
-      <span className="text-2xl font-orbitron text-blue-500">P</span>
-      avlov.
-      <span className="text-2xl text-blue-500 font-orbitron">D</span>ev
-    </span>
+    <motion.span
+  initial="hidden"
+  animate="visible"
+  variants={{
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.08,
+      },
+    },
+  }}
+  className="font-bold text-foreground text-base sm:text-lg tracking-tight font-lora truncate"
+>
+  {"Pavlov.Dev".split("").map((char, index) => (
+    <motion.span
+      key={index}
+      variants={{
+        hidden: {
+          opacity: 0,
+          y: 20,
+        },
+        visible: {
+          opacity: 1,
+          y: 0,
+        },
+      }}
+      transition={{ duration: 0.4 }}
+      className={
+        char === "P" || char === "D"
+          ? "text-blue-500 text-2xl font-orbitron"
+          : ""
+      }
+    >
+      {char}
+    </motion.span>
+  ))}
+</motion.span>
 
     {/* MENU DESKTOP */}
     <nav className="hidden lg:flex items-center gap-6 text-sm text-muted">
