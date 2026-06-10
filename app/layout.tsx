@@ -46,7 +46,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} ${lora.variable} ${raleway.variable} ${orbitron.variable}`} 
     >
-      <body className="text-foreground antialiased">
+      <body className="text-foreground antialiase w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8d ">
         <Providers>
           <AuroraBackground />
           {children}
