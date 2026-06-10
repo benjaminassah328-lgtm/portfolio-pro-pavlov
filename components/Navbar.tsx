@@ -84,85 +84,88 @@ export function Navbar() {
 
   return (
     <motion.header
-  className="fixed top-0 left-0 right-0 z-50 w-full overflow-x-hidden transition-all duration-300"
-      style={{
-        backdropFilter: scrolled ? "blur(12px)" : "none",
-        borderBottom: scrolled ? "1px solid var(--border)" : "none",
-        backgroundColor: scrolled
-          ? "color-mix(in srgb, var(--background) 80%, transparent)"
-          : "transparent",
-      }}
-    >
-      <div className="w-full max-w-5xl mx-auto px-3 sm:px-4 md:px-6 h-16 flex items-center justify-between overflow-hidden">
-        <span className="font-bold text-foreground text-base sm:text-lg tracking-tight font-lora">
-  <span className="text-2xl font-orbitron">A</span>
-  ..<span className="text-2xl text-blue-500 font-orbitron"></span>
-  <span className="font-orbitron text-2xl">D</span>ev
-</span>
-        {/* Menu Desktop */}
-        <nav className="hidden lg:flex items-center gap-6 text-sm text-muted">
+  className="fixed top-0 left-0 right-0 z-50 w-full overflow-x-hidden"
+  style={{
+    backdropFilter: scrolled ? "blur(12px)" : "none",
+    borderBottom: scrolled ? "1px solid var(--border)" : "none",
+    backgroundColor: scrolled
+      ? "color-mix(in srgb, var(--background) 80%, transparent)"
+      : "transparent",
+  }}
+>
+  <div className="w-full max-w-6xl mx-auto px-3 sm:px-6 md:px-8 h-16 flex items-center justify-between overflow-hidden">
+    
+    {/* LOGO */}
+    <span className="font-bold text-foreground text-base sm:text-lg tracking-tight font-lora truncate">
+      <span className="text-2xl font-orbitron">P</span>
+      avlov.
+      <span className="text-2xl text-blue-500 font-orbitron">D</span>ev
+    </span>
+
+    {/* MENU DESKTOP */}
+    <nav className="hidden lg:flex items-center gap-6 text-sm text-muted">
+      {navLinks.map((link) => (
+        <a
+          key={link.href}
+          href={link.href}
+          className="hover:text-foreground transition-colors"
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    {/* ACTIONS */}
+    <div className="flex items-center gap-1 sm:gap-2 shrink-0">
+      
+      {mounted && (
+        <Button
+          variant="ghost"
+          isIconOnly
+          className="shrink-0"
+          onPress={() => setTheme(theme === "dark" ? "light" : "dark")}
+          aria-label="Basculer le thème"
+        >
+          {theme === "dark" ? <SunIcon /> : <MoonIcon />}
+        </Button>
+      )}
+
+      {/* HAMBURGER */}
+      <button
+        onClick={() => setMenuOpen(!menuOpen)}
+        className="lg:hidden p-2 rounded-md text-foreground shrink-0"
+        aria-label="Ouvrir le menu"
+      >
+        {menuOpen ? <CloseIcon /> : <MenuIcon />}
+      </button>
+    </div>
+  </div>
+
+  {/* MOBILE MENU */}
+  <AnimatePresence>
+    {menuOpen && (
+      <motion.div
+        initial={{ opacity: 0, y: -15 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -15 }}
+        transition={{ duration: 0.2 }}
+        className="lg:hidden border-t border-default-200 bg-background"
+      >
+        <nav className="flex flex-col px-6 py-4">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="hover:text-foreground transition-colors duration-200"
+              onClick={() => setMenuOpen(false)}
+              className="py-3 text-sm text-foreground hover:opacity-70"
             >
               {link.label}
             </a>
           ))}
         </nav>
-
-        {/* Actions */}
-       <div className="flex items-center gap-1 shrink-0">
-          {mounted && (
-            <Button
-              variant="ghost"
-              isIconOnly
-              onPress={() =>
-                setTheme(theme === "dark" ? "light" : "dark")
-              }
-              aria-label="Basculer le thème"
-            >
-              {theme === "dark" ? <SunIcon /> : <MoonIcon />}
-            </Button>
-          )}
-
-          {/* Hamburger Mobile */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="lg:hidden p-2 rounded-md text-foreground"
-            aria-label="Ouvrir le menu"
-          >
-            {menuOpen ? <CloseIcon /> : <MenuIcon />}
-          </button>
-        </div>
-      </div>
-
-      {/* Menu Mobile */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -15 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
-            transition={{ duration: 0.2 }}
-            className="lg:hidden border-t border-default-200 bg-background"
-          >
-            <nav className="flex flex-col px-6 py-4">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="py-3 text-sm text-foreground hover:opacity-70 transition-opacity"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.header>
+      </motion.div>
+    )}
+  </AnimatePresence>
+</motion.header>
   );
 }
