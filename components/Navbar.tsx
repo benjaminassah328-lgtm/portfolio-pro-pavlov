@@ -97,7 +97,7 @@ export function Navbar() {
     
     {/* LOGO */}
     <span className="font-bold text-foreground text-base sm:text-lg tracking-tight font-lora truncate">
-      <span className="text-2xl font-orbitron">P</span>
+      <span className="text-2xl font-orbitron text-blue-500">P</span>
       avlov.
       <span className="text-2xl text-blue-500 font-orbitron">D</span>ev
     </span>
