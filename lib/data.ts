@@ -17,7 +17,7 @@ export const education = [
   {
     id: 1,
     school: "UIPA",
-    degree: "2e Année d'Informatique Developpeur d'Application",
+    degree: "BTS en Informatique Developpeur d'Application (IDA)",
     year: "2024 – 2026",
     description:
       "Formation générale en développement logiciel, algorithmique, bases de données et systèmes d'information.",
@@ -59,5 +59,15 @@ export const projects = [
     stack: ["React", "Tailwind CSS"],
     github: "https://restaurant-pavlov-6b3fbscsk-benjaminassah328-lgtms-projects.vercel.app",
     type: "Personnel",
+  },
+
+  {
+    id: 4,
+    title: "Dri valé",
+    description:
+      "Site de restaurant pour recevoir les commandes via whatsApp",
+    stack: ["React", "Tailwind CSS"],
+    github: "https://www.dri-vale.online/login",
+    type: "Dri valé",
   },
 ];
