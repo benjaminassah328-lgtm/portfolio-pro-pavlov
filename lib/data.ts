@@ -6,6 +6,7 @@ export const profile = {
   email: "benjaminassah328@gmail.com",
   github: "https://benjaminassah328-lgtm",
   linkedin: "https://linkedin.com/in/benjaminassah",
+  TikTok:"https://www.tiktok.com/@pavlov.dev?_r=1&_t=ZS-994iofI1lzO",
   cvPath: "/cv-benjamin-assah.pdf",
 };
 

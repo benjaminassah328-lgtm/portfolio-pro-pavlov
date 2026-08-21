@@ -27,11 +27,44 @@ function GithubIcon() {
     </svg>
   );
 }
-
+function TikTokIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-3.77V2h-3.43v13.67a2.89 2.89 0 1 1-2.89-2.89c.3 0 .6.05.87.13V9.42a6.32 6.32 0 1 0 5.45 6.25V8.41a8.16 8.16 0 0 0 4.77 1.53V6.69z" />
+    </svg>
+  );
+}
 const links = [
-  { label: "Email", href: `mailto:${profile.email}`, icon: <MailIcon />, value: profile.email },
-  { label: "LinkedIn", href: profile.linkedin, icon: <LinkedinIcon />, value: "linkedin.com/in/benjaminassah" },
-  { label: "GitHub", href: profile.github, icon: <GithubIcon />, value: "benjaminassah328-lgtm" },
+  {
+    label: "Email",
+    href: `mailto:${profile.email}`,
+    icon: <MailIcon />,
+    value: profile.email,
+  },
+  {
+    label: "LinkedIn",
+    href: profile.linkedin,
+    icon: <LinkedinIcon />,
+    value: "linkedin.com/in/benjaminassah",
+  },
+  {
+    label: "GitHub",
+    href: profile.github,
+    icon: <GithubIcon />,
+    value: "benjaminassah328-lgtm",
+  },
+  {
+    label: "TikTok",
+    href: profile.TikTok,
+    icon: <TikTokIcon />,
+    value: "https://www.tiktok.com/@pavlov.dev?_r=1&_t=ZS-994iofI1lzO",
+  },
 ];
 
 export function Contact() {
