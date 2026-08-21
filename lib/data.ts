@@ -67,7 +67,7 @@ export const projects = [
     description:
       "Site de restaurant pour recevoir les commandes via whatsApp",
     stack: ["React", "Tailwind CSS"],
-    github: "https://www.dri-vale.online/login",
+    github: "https://www.dri-vale.online",
     type: "Dri valé",
   },
 ];
