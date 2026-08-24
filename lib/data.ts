@@ -4,10 +4,9 @@ export const profile = {
   tagline:
     "Passionné par le code, curieux par nature — fraîchement diplômé et prêt à construire.",
   email: "benjaminassah328@gmail.com",
-  github: "https://benjaminassah328-lgtm",
   linkedin: "https://linkedin.com/in/benjaminassah",
   TikTok:"https://www.tiktok.com/@pavlov.dev?_r=1&_t=ZS-994iofI1lzO",
-  cvPath: "/cv-benjamin-assah.pdf",
+  cvPath: "CV_Assah_Dossou_Benjamin.pdf",
 };
 
 export const about = {

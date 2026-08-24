@@ -53,12 +53,7 @@ const links = [
     icon: <LinkedinIcon />,
     value: "linkedin.com/in/benjaminassah",
   },
-  {
-    label: "GitHub",
-    href: profile.github,
-    icon: <GithubIcon />,
-    value: "benjaminassah328-lgtm",
-  },
+  
   {
     label: "TikTok",
     href: profile.TikTok,
